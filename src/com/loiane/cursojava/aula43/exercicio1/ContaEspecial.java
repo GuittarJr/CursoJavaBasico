@@ -1,5 +1,7 @@
 package com.loiane.cursojava.aula43.exercicio1;
 
+import java.util.Scanner;
+
 public class ContaEspecial extends ContaBancaria{
     private double limite;
 
@@ -15,6 +17,11 @@ public class ContaEspecial extends ContaBancaria{
         return (this.limite - temp) >= 0;
     }
 
+    @Override
+    public double getDiaRendimento() {
+        return 0;
+    }
+
     public void sacarValor(double valor){
         double temp = this.getSaldo() - valor;
         if(this.confirmarSaldo(temp) == true){
@@ -26,4 +33,13 @@ public class ContaEspecial extends ContaBancaria{
             System.out.println("Não foi possível realizar saque");
         }
     }
+
+    @Override
+    public String toString() {
+        String s = "Nome: " + this.getNomeCliente() + ";\nSaldo: " + this.getSaldo();
+        return "ContaEspecial{" + s +
+                "limite=" + limite +
+                '}';
+    }
+
 }

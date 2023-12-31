@@ -1,6 +1,8 @@
 package com.loiane.cursojava.aula43.exercicio1;
 
-public class ContaBancaria {
+import java.util.Scanner;
+
+public abstract class ContaBancaria {
     private String nomeCliente;
     private int numConta;
     private double saldo;
@@ -42,4 +44,23 @@ public class ContaBancaria {
     public void depositarDinheiro(double valor){
         this.saldo += valor;
     }
+
+    @Override
+    public abstract String toString();
+
+    public void fazerDeposito(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Quanto você gostaria de depositar ?");
+        double valor = in.nextDouble();
+        depositarDinheiro(valor);
+    };
+
+    public void sacarDinheiro(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Quanto você gostaria de sacar?");
+        double valor = in.nextDouble();
+        this.sacarValor(valor);
+    }
+
+    public abstract double getDiaRendimento();
 }

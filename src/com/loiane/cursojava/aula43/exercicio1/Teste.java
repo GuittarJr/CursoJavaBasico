@@ -18,18 +18,31 @@ public class Teste {
         switch (escolha){
             case 1: conta = new ContaPoupanca(0.20); break;
             case 2: conta = new ContaEspecial(); break;
-            default: conta = new ContaBancaria();
+            default: conta = new ContaPoupanca(0.0);
         }
 
-        int opcoes = 2;
-        do{
-            System.out.println("O que você gostaria de fazer ?");
-            System.out.println("1 - fazer um deposito\n2 - Realizar um saque");
-            if(conta instanceof ContaPoupanca){
-                System.out.println("3 - Verificar rendimento");
-            }
-            opcoes = scan.nextByte();
-        }while(opcoes != 0);
+        int opcoes = 5;
+
+        System.out.println("O que você gostaria de fazer ?");
+        System.out.println("1 - fazer um deposito\n2 - Realizar um saque");
+        System.out.println("3 - Mostrar informações");
+        if(conta instanceof ContaPoupanca){
+            System.out.println("4 - Mostrar Rendimento");
+        }
+        opcoes = scan.nextByte();
+
+       if(opcoes == 1){
+           conta.fazerDeposito();
+       } else if (opcoes == 2) {
+           conta.sacarDinheiro();
+       } else if (opcoes == 3) {
+           conta.toString();
+       } else if (conta instanceof ContaPoupanca && opcoes == 4) {
+           conta.getDiaRendimento();
+       }else {
+           System.out.println("Não foi possível identificar o que você está procurando!");
+       }
 
     }
+
 }
